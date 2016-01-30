@@ -9,32 +9,41 @@ public class ButtonPanel : MonoBehaviour {
     public string buttonName;
 
     [HideInInspector]
-    public GameObject attachTo;
+    public GameObject player;
 
+    [HideInInspector]
     public Color buttonFillColor;
+
+    [HideInInspector]
     public int maxFillSteps;
-    private int fillSteps = 0;
+
+    [HideInInspector]
+    public int fillSteps = 0;
 
     void Start ()
     {
-        transform.FindChild("ButtonFill").GetComponent<Image>().color = buttonFillColor;
     }
 	
 	void Update ()
     {
-        GetComponent<RectTransform>().anchoredPosition =
-            Camera.main.WorldToScreenPoint(attachTo.transform.position);
-
-        if (Input.GetButtonDown(buttonName))
+        transform.FindChild("ButtonFill").GetComponent<Image>().color = Game.game.GetUserColor(player.GetComponent<BeeMovement>().GetIdPlayer());
+        if (fillSteps < maxFillSteps)
         {
-            ++fillSteps;
-            GetComponent<Animator>().SetTrigger("Pressed");
-            transform.FindChild("ButtonFill").GetComponent<Image>().fillAmount = ((float)fillSteps) / maxFillSteps;
-        }
+            GetComponent<RectTransform>().anchoredPosition =
+            Camera.main.WorldToScreenPoint(player.transform.position);
 
-        if (fillSteps >= maxFillSteps)
-        {
-            DestroySelf();
+            if (Input.GetButtonDown(buttonName))
+            {
+                ++fillSteps;
+                GetComponent<Animator>().SetTrigger("Pressed");
+                transform.FindChild("ButtonFill").GetComponent<Image>().fillAmount = ((float)fillSteps) / maxFillSteps;
+                Debug.Log(((float)fillSteps) / maxFillSteps);
+            }
+            
+            if (fillSteps >= maxFillSteps)
+            {
+                DestroySelf();
+            }
         }
 	}
 
@@ -45,7 +54,7 @@ public class ButtonPanel : MonoBehaviour {
 
     private void DestroySelf()
     {
-        attachTo.SendMessage("OnCurrentButtonPanelDestroyed");
-        Destroy(this);
+        player.SendMessage("OnCurrentButtonPanelDestroyed");
+        Destroy(gameObject);
     }
 }

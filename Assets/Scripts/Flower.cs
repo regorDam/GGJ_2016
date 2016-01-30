@@ -6,7 +6,9 @@ public class Flower : MonoBehaviour
     [Range(1, 4)]
     public int idPlayer = 1;
 
-    public int originalPolen, polen;
+    [HideInInspector]
+    public float originalPolen;
+    public float polen;
     public float cooldown;
 
     private bool blossomed;
@@ -52,8 +54,9 @@ public class Flower : MonoBehaviour
                 BeeMovement bee = col.transform.parent.gameObject.GetComponent<BeeMovement>();
                 if (!bee.falling && !bee.recovering && Input.GetButtonDown("Recolect" + bee.GetIdPlayer()))
                 {
+
                     Recollect(bee);
-                    UnBlossom();
+                    if(polen <= 0) UnBlossom();
                 }
  
             }
@@ -62,12 +65,9 @@ public class Flower : MonoBehaviour
 
     void Recollect(BeeMovement bee)
     {
-        polen -= 1;
+        if (bee.idPlayer == idPlayer) polen -= 0.5f;
+        else polen -= 1;
         bee.AddPolen(1);
-        if (bee.idPlayer == idPlayer)
-        {
-            bee.AddPolen(1);
-        }
     }
 
     void Blossom()

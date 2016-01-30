@@ -4,9 +4,10 @@ using UnityEngine.UI;
 
 public class ButtonsCanvasManager : MonoBehaviour
 {
-    public GameObject buttonPanelPrefab;
+    public GameObject buttonPanelFlowerPrefab;
+    public GameObject buttonPanelHoneycombPrefab;
 
-	void Start ()
+    void Start ()
     {
 	    
 	}
@@ -16,9 +17,9 @@ public class ButtonsCanvasManager : MonoBehaviour
 	
 	}
 
-    public GameObject CreateButtonPanel(string key, string buttonName, GameObject attachTo, int fillSteps)
+    public GameObject CreateButtonPanelFlower(string key, string buttonName, GameObject player, GameObject flower)
     {
-        GameObject bp = Instantiate(buttonPanelPrefab,
+        GameObject bp = Instantiate(buttonPanelFlowerPrefab,
                                     Vector3.zero,
                                     new Quaternion()) as GameObject;
 
@@ -27,7 +28,22 @@ public class ButtonsCanvasManager : MonoBehaviour
 
         bp.transform.parent = transform;
         bp.GetComponent<ButtonPanel>().buttonName = buttonName;
-        bp.GetComponent<ButtonPanel>().attachTo = attachTo; 
+        bp.GetComponent<ButtonPanel>().player = player;
+        return bp;
+    }
+
+    public GameObject CreateButtonPanelHoneycomb(string key, string buttonName, GameObject player, GameObject honeycomb)
+    {
+        GameObject bp = Instantiate(buttonPanelHoneycombPrefab,
+                                    Vector3.zero,
+                                    new Quaternion()) as GameObject;
+
+        Text panelText = bp.GetComponentInChildren<Text>();
+        panelText.text = key;
+
+        bp.transform.parent = transform;
+        bp.GetComponent<ButtonPanel>().buttonName = buttonName;
+        bp.GetComponent<ButtonPanel>().player = player;
         return bp;
     }
 }
