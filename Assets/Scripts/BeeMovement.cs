@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BeeMovement : MonoBehaviour
+public class BeeMovement : MonoBehaviour, IButtonPanelHoneyProvider
 {
     [Range(1, 4)]
     public int idPlayer = 1;
@@ -138,7 +138,7 @@ public class BeeMovement : MonoBehaviour
                 currentButtonPanel = GameObject.Find("ButtonsCanvas").
                     GetComponent<ButtonsCanvasManager>().CreateButtonPanel("A", "Recolect" + idPlayer, 
                                                                            gameObject, 
-                                                                           col.gameObject.GetComponent<Flower>());
+                                                                           this);
             }
         }
     }
@@ -155,5 +155,16 @@ public class BeeMovement : MonoBehaviour
     public void OnCurrentButtonPanelDestroyed()
     {
         currentButtonPanel = null;
+    }
+
+
+    float IButtonPanelHoneyProvider.GetCurrentPanelButtonSteps()
+    {
+        return polen;
+    }
+
+    float IButtonPanelHoneyProvider.GetMaxPanelButtonSteps()
+    {
+        return capacity;
     }
 }

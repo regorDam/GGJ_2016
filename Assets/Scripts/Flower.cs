@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Flower : MonoBehaviour, IButtonPanelHoneyProvider
+public class Flower : MonoBehaviour
 {
     [Range(1, 4)]
     public int idPlayer = 1;
@@ -98,15 +98,5 @@ public class Flower : MonoBehaviour, IButtonPanelHoneyProvider
     {
         blossomed = false;
         time = 0.0f;
-    }
-
-    float IButtonPanelHoneyProvider.GetCurrentPanelButtonSteps()
-    {
-        return polen;
-    }
-
-    float IButtonPanelHoneyProvider.GetMaxPanelButtonSteps()
-    {
-        return originalPolen;
     }
 }
