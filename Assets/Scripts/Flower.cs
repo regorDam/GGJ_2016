@@ -7,13 +7,36 @@ public class Flower : MonoBehaviour
     public int polen;
     public float cooldown;
 
+    private bool blossomed;
+    public float blossomSpeed;
+    public Vector3 minScale;
+
+    private float time;
+
 	void Start ()
     {
         idPlayer = Random.Range(0, 4);
+        blossomed = false;
+        cooldown = Random.Range(2.0f, 7.0f);
 	}
 	
 	void Update ()
     {
-        GetComponent<Renderer>().material.color = Game.game.GetUserColor(idPlayer);
+        time += Time.deltaTime;
+        if(time > cooldown)
+        {
+            blossomed = true;
+        }
+
+        if(blossomed && transform.localScale.x < 1.0f)
+        {
+            transform.localScale = Vector3.Lerp(transform.localScale, Vector3.one, Time.deltaTime * blossomSpeed); //Grow
+        }
+        else if(!blossomed)
+        {
+            transform.localScale = Vector3.Lerp(transform.localScale, minScale, Time.deltaTime * blossomSpeed); //Shrink
+        }
+
+        GetComponentInChildren<Renderer>().material.color = Game.game.GetUserColor(idPlayer);
     }
 }

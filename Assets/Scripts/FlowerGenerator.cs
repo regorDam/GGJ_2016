@@ -9,8 +9,9 @@ public class FlowerGenerator : MonoBehaviour
 
     public int numFlowers;
     public GameObject flowerPrefab;
-     
-	void Start()
+    public GameObject floor;
+
+    void Start()
     {
         time = 0.0f;
         generatedFlowers = new List<GameObject>();
@@ -35,13 +36,14 @@ public class FlowerGenerator : MonoBehaviour
             {
                 Vector3 randomPosition = new Vector3();
                 randomPosition.x = Random.Range(-extents.x, extents.x);
+                randomPosition.y = floor.transform.position.y + floor.GetComponent<Renderer>().bounds.extents.y;
                 randomPosition.z = Random.Range(-extents.z, extents.z);
 
                 flower.transform.position = randomPosition;
 
                 foreach(GameObject other in generatedFlowers)
                 {
-                    if(flower.GetComponent<BoxCollider>().bounds.Intersects(other.GetComponent<BoxCollider>().bounds))
+                    if(flower.GetComponentInChildren<BoxCollider>().bounds.Intersects(other.GetComponentInChildren<BoxCollider>().bounds))
                     {
                         free = false;
                         break;
