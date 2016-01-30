@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Honeycomb : MonoBehaviour
 {
@@ -10,11 +11,22 @@ public class Honeycomb : MonoBehaviour
     public float currentPolen = 0;
     public float maxPolenCapacity = 100;
 
-	void Start ()
-    {
-	    
-	}
+    public float distanceSpawn = 0.0f;
+
+    public List<GameObject> bees;
 	
+    void Start()
+    {
+        foreach(GameObject bee in bees)
+        {
+            bee.GetComponent<BeeIdle>().enabled = true;
+            bee.GetComponent<BeeMovement>().enabled = false;
+            bee.GetComponentInChildren<SphereCollider>().enabled = false;
+        }
+        if(bees.Count > 0)
+            SwapBees(bees[0]);
+    }
+
 	void Update ()
     {
         if(currentPolen >= maxPolenCapacity)
@@ -26,6 +38,22 @@ public class Honeycomb : MonoBehaviour
         UpdateTextureOffset();
     }
     
+    void SwapBees(GameObject entryBee)
+    {
+        //Entra una
+        entryBee.GetComponent<BeeIdle>().enabled = true;
+        entryBee.GetComponent<BeeMovement>().enabled = false;
+        entryBee.GetComponentInChildren<SphereCollider>().enabled = false;
+
+        //Sale otra
+        int i = entryBee.GetComponent<BeeMovement>().type % 3;
+        GameObject newBee = bees[i];
+        newBee.GetComponent<BeeIdle>().enabled = false;
+        newBee.GetComponent<BeeMovement>().enabled = true;
+        newBee.GetComponentInChildren<SphereCollider>().enabled = true;
+
+        newBee.transform.position = transform.position + (Vector3.zero - transform.position).normalized * distanceSpawn;
+    }
 
     void UpdateTextureOffset()
     {

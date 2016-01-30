@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: dc082e999b86ccf4d8f6b57caa4a014d
-timeCreated: 1454181916
+timeCreated: 1454185972
 licenseType: Free
 SubstanceImporter:
   serializedVersion: 5
@@ -427,7 +427,7 @@ SubstanceImporter:
         data:
           first:
             name: _UserColor
-          second: {r: 1, g: 0.7241379, b: 0, a: 1}
+          second: {r: 1, g: 0, b: 0, a: 1}
         data:
           first:
             name: _OutlineColor

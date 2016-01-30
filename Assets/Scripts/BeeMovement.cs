@@ -43,6 +43,8 @@ public class BeeMovement : MonoBehaviour
                                          Time.deltaTime * rotSpeed);
         */
 
+        GetComponentInChildren<Renderer>().material.SetColor("_UserColor", Game.game.GetUserColor(idPlayer));
+
         if (falling)
         {
             timeLeft -= Time.deltaTime;
