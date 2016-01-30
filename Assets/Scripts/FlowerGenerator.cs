@@ -51,7 +51,8 @@ public class FlowerGenerator : MonoBehaviour
             }
             while (colliding && x < 1000);
 
-            generatedFlowers.Add(flower);
+            if (colliding) Destroy(flower);
+            else generatedFlowers.Add(flower);
         }
     }
 }
