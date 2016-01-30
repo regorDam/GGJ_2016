@@ -43,7 +43,7 @@ public class FlowerGenerator : MonoBehaviour
 
                 foreach(GameObject other in generatedFlowers)
                 {
-                    if(flower.GetComponentInChildren<BoxCollider>().bounds.Intersects(other.GetComponentInChildren<BoxCollider>().bounds))
+                    if(flower.GetComponentInChildren<Renderer>().bounds.Intersects(other.GetComponentInChildren<Renderer>().bounds))
                     {
                         free = false;
                         break;

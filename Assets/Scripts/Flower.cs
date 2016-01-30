@@ -41,4 +41,21 @@ public class Flower : MonoBehaviour
 
         GetComponentInChildren<Renderer>().material.color = Game.game.GetUserColor(idPlayer);
     }
+
+    void OnTriggerEnter(Collider col)
+    {
+        
+        if (col.transform.parent != null)
+        {
+            if (col.transform.parent.gameObject.tag.Equals("Player"))
+            {
+                BeeMovement bee = col.transform.parent.gameObject.GetComponent<BeeMovement>();
+                bee.AddPolen(polen);
+                if (bee.idPlayer == idPlayer)
+                {
+                    bee.AddPolen(polen);
+                }
+            }
+        }
+    }
 }

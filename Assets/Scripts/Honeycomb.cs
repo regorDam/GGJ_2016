@@ -11,12 +11,22 @@ public class Honeycomb : MonoBehaviour
 
 	void Start ()
     {
-	
+	    
 	}
 	
 	void Update ()
     {
+        if(currentPolen >= maxPolenCapacity)
+        {
+            Game.game.Win(idPlayer);
+        }
+
+        UpdateTextureOffset();
+    }
+
+    void UpdateTextureOffset()
+    {
         float offsety = (1.0f - ((float)currentPolen / maxPolenCapacity)) * 0.5f;
         GetComponent<Renderer>().material.mainTextureOffset = new Vector2(0.0f, offsety);
-	}
+    }
 }

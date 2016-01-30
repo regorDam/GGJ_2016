@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviour
 {
@@ -20,5 +21,11 @@ public class Game : MonoBehaviour
     public Color GetUserColor(int userid)
     {
         return userColors[userid];
+    }
+
+    public void Win(int idPlayer)
+    {
+        Debug.Log("Player " + idPlayer + " has won!");
+        SceneManager.LoadScene("WinMenu");
     }
 }
