@@ -16,13 +16,17 @@ public class BeeMovement : MonoBehaviour
 	
     public float timeLeft;
 
-    private bool falling = false;
-    private bool recovering = false;
-   
+    [HideInInspector]
+    public bool falling = false;
+    [HideInInspector]
+    public bool recovering = false;
+
     private Vector3 returnPosition;
     private Rigidbody rb;
     private float time;
     private int polen = 0;
+
+    private GameObject currentButtonPanel = null;
 
     void Start()
     {
@@ -49,28 +53,22 @@ public class BeeMovement : MonoBehaviour
                 recovering = true;
                 rb.useGravity = false;
             }
-            Debug.Log(idPlayer + ": " + "Falling");
         }
 
         if (!falling && !recovering) //Enable input
         {
-            Debug.Log(idPlayer + ": " + "Flying");
             float inputx = Input.GetAxis("Horizontal" + idPlayer);
             float inputz = Input.GetAxis("Vertical" + idPlayer);
             rb.velocity = new Vector3(inputx, 0.0f, inputz).normalized * speed;
 
             if (inputx != 0 || inputz != 0)
                 transform.LookAt(transform.position + new Vector3(inputx, 0.0f, inputz));
-
-            if (Input.GetButtonDown("Recolect" + idPlayer))
-                Debug.Log("Recolect" + idPlayer);
         }
 
         if (transform.position.y < returnPosition.y && !falling)
         {
             if(recovering) //Esta subiendo de la caida
             {
-                Debug.Log(idPlayer + ": " + "Returning");
                 Vector3 moveDir = (returnPosition - transform.position).normalized;
                 rb.velocity = moveDir * recoverySpeed * Time.deltaTime;
             }
@@ -126,5 +124,35 @@ public class BeeMovement : MonoBehaviour
         int dropPolen = Mathf.Min(2,polen);
         polen -= dropPolen;
 		return dropPolen;
-	}
+    }
+    
+    void OnTriggerEnter(Collider col)
+    {
+        Debug.Log(col.transform.gameObject.name);
+        if (col.transform.gameObject.tag.Equals("Flower"))
+        {
+            if(currentButtonPanel == null)
+            {
+                Flower flower = col.transform.gameObject.GetComponent<Flower>();
+                int fillButtonMaxStepAportation = flower.polen;
+                currentButtonPanel = GameObject.Find("ButtonsCanvas").
+                    GetComponent<ButtonsCanvasManager>().CreateButtonPanel("A", "Recolect" + idPlayer, gameObject, fillButtonMaxStepAportation);
+            }
+        }
+    }
+
+    void OnTriggerExit(Collider col)
+    {
+        Debug.Log(col.transform.gameObject.name);
+        if (col.transform.gameObject.tag.Equals("Flower"))
+        {
+            if (currentButtonPanel != null)
+                currentButtonPanel.SendMessage("OnAttachToWentOutOfTrigger"); //Destroy the current button panel
+        }
+    }
+
+    public void OnCurrentButtonPanelDestroyed()
+    {
+        currentButtonPanel = null;
+    }
 }
