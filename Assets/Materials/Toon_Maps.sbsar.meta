@@ -1,0 +1,911 @@
+fileFormatVersion: 2
+guid: dc082e999b86ccf4d8f6b57caa4a014d
+timeCreated: 1454181916
+licenseType: Free
+SubstanceImporter:
+  serializedVersion: 5
+  materialInstances:
+  - serializedVersion: 16
+    name: Bee1
+    prototypeName: Toon_PBR
+    shader: {fileID: 4800000, guid: 23573085a5c61d64a87a2f05691cb78e, type: 3}
+    shaderKeywords: _NORMALMAP
+    renderQueue: 2450
+    lightmapFlags: 5
+    inputs:
+    - name: $outputsize
+      value:
+        scalar[0]: 8
+        scalar[1]: 8
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: DiffuseMap
+      value:
+        scalar[0]: 0
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: AO_Intensity
+      value:
+        scalar[0]: 1
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: AO_Equalizer
+      value:
+        scalar[0]: 0.43
+        scalar[1]: -0.14
+        scalar[2]: -0.24
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: AO_Levels
+      value:
+        scalar[0]: 0
+        scalar[1]: 0.34
+        scalar[2]: 0.85
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: Bevel_Distance
+      value:
+        scalar[0]: -0.01
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: Bevel_Smooth
+      value:
+        scalar[0]: 3.24
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: Normal_Intensity
+      value:
+        scalar[0]: 6.3
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: NormalMap_Blur
+      value:
+        scalar[0]: 0
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: BumpMap
+      value:
+        scalar[0]: 0
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    materialInformation:
+      serializedVersion: 5
+      offset: {x: 0, y: 0}
+      scale: {x: 1, y: 1}
+      generateMipmaps: 0
+      generateAllOutputs: 0
+      animationUpdateRate: 42
+    materialProperties:
+      serializedVersion: 2
+      texEnvs:
+        data:
+          first:
+            name: _MainTex
+          second:
+            texture: {fileID: 2800000, guid: 9c854023f385fc1409ae5f0307ce62d9, type: 3}
+            scale: {x: 1, y: 1}
+            offset: {x: 0, y: 0}
+        data:
+          first:
+            name: _BumpMap
+          second:
+            texture: {instanceID: 0}
+            scale: {x: 1, y: 1}
+            offset: {x: 0, y: 0}
+        data:
+          first:
+            name: _RampMap
+          second:
+            texture: {fileID: 2800000, guid: a54a836f027df3f4a8d894236589b700, type: 3}
+            scale: {x: 1.29, y: 1}
+            offset: {x: 0.91, y: 0}
+        data:
+          first:
+            name: _ColorMap
+          second:
+            texture: {fileID: 2800000, guid: 2b0417ca129cfb441b8e4b40b3aec2ae, type: 3}
+            scale: {x: 1, y: 1}
+            offset: {x: 0, y: 0}
+      floats:
+        data:
+          first:
+            name: _SrcBlend
+          second: 1
+        data:
+          first:
+            name: _DstBlend
+          second: 0
+        data:
+          first:
+            name: _Cutoff
+          second: 0.5
+        data:
+          first:
+            name: _Parallax
+          second: 0.02
+        data:
+          first:
+            name: _ZWrite
+          second: 1
+        data:
+          first:
+            name: _Glossiness
+          second: 0.5
+        data:
+          first:
+            name: _BumpScale
+          second: 1
+        data:
+          first:
+            name: _OcclusionStrength
+          second: 1
+        data:
+          first:
+            name: _DetailNormalMapScale
+          second: 1
+        data:
+          first:
+            name: _UVSec
+          second: 0
+        data:
+          first:
+            name: _Mode
+          second: 0
+        data:
+          first:
+            name: _Metallic
+          second: 0
+        data:
+          first:
+            name: _FresnelPower
+          second: 4
+        data:
+          first:
+            name: _OutlineWidth
+          second: 0.01
+      colors:
+        data:
+          first:
+            name: _EmissionColor
+          second: {r: 0, g: 0, b: 0, a: 1}
+        data:
+          first:
+            name: _Color
+          second: {r: 1, g: 1, b: 1, a: 1}
+        data:
+          first:
+            name: _RampShadow
+          second: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
+        data:
+          first:
+            name: _RampLight
+          second: {r: 1, g: 1, b: 1, a: 0.284}
+        data:
+          first:
+            name: _FresnelColor
+          second: {r: 0.85098046, g: 0.90196085, b: 0.3529412, a: 0.178}
+        data:
+          first:
+            name: _UserColor
+          second: {r: 0.9490197, g: 0.76470596, b: 0, a: 1}
+        data:
+          first:
+            name: _OutlineColor
+          second: {r: 0, g: 0, b: 0, a: 1}
+    textureParameters:
+    - name: Bee1_diffuse
+      alphaSource: 6
+      filterMode: 1
+      aniso: 1
+      wrapMode: 0
+    - name: Bee1_normal
+      alphaSource: 0
+      filterMode: 1
+      aniso: 1
+      wrapMode: 0
+    textureAssignments:
+    - shaderProp:
+        name: _BumpMap
+      material: {instanceID: 0}
+      baseUID: 610596349
+    buildTargetSettings:
+    - serializedVersion: 2
+      buildTarget: 
+      textureWidth: 512
+      textureHeight: 512
+      textureFormat: 0
+      loadingBehavior: 1
+  - serializedVersion: 16
+    name: Bee2
+    prototypeName: Toon_PBR
+    shader: {fileID: 4800000, guid: 23573085a5c61d64a87a2f05691cb78e, type: 3}
+    shaderKeywords: _NORMALMAP
+    renderQueue: 2450
+    lightmapFlags: 5
+    inputs:
+    - name: $outputsize
+      value:
+        scalar[0]: 8
+        scalar[1]: 8
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: DiffuseMap
+      value:
+        scalar[0]: 0
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: AO_Intensity
+      value:
+        scalar[0]: 1
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: AO_Equalizer
+      value:
+        scalar[0]: 0.43
+        scalar[1]: -0.14
+        scalar[2]: -0.24
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: AO_Levels
+      value:
+        scalar[0]: 0
+        scalar[1]: 0.34
+        scalar[2]: 0.85
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: Bevel_Distance
+      value:
+        scalar[0]: -0.01
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: Bevel_Smooth
+      value:
+        scalar[0]: 3.24
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: Normal_Intensity
+      value:
+        scalar[0]: 6.3
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: NormalMap_Blur
+      value:
+        scalar[0]: 0
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: BumpMap
+      value:
+        scalar[0]: 0
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    materialInformation:
+      serializedVersion: 5
+      offset: {x: 0, y: 0}
+      scale: {x: 1, y: 1}
+      generateMipmaps: 0
+      generateAllOutputs: 0
+      animationUpdateRate: 42
+    materialProperties:
+      serializedVersion: 2
+      texEnvs:
+        data:
+          first:
+            name: _MainTex
+          second:
+            texture: {fileID: 2800000, guid: 6cd5b528945d9d340829d7febe75e049, type: 3}
+            scale: {x: 1, y: 1}
+            offset: {x: 0, y: 0}
+        data:
+          first:
+            name: _BumpMap
+          second:
+            texture: {instanceID: 0}
+            scale: {x: 1, y: 1}
+            offset: {x: 0, y: 0}
+        data:
+          first:
+            name: _RampMap
+          second:
+            texture: {fileID: 2800000, guid: a54a836f027df3f4a8d894236589b700, type: 3}
+            scale: {x: 1, y: 1}
+            offset: {x: 0, y: 0}
+        data:
+          first:
+            name: _ColorMap
+          second:
+            texture: {fileID: 2800000, guid: 1b377edfd038aff478e708fcbe8d3fec, type: 3}
+            scale: {x: 1, y: 1}
+            offset: {x: 0, y: 0}
+      floats:
+        data:
+          first:
+            name: _SrcBlend
+          second: 1
+        data:
+          first:
+            name: _DstBlend
+          second: 0
+        data:
+          first:
+            name: _Cutoff
+          second: 0.5
+        data:
+          first:
+            name: _Parallax
+          second: 0.02
+        data:
+          first:
+            name: _ZWrite
+          second: 1
+        data:
+          first:
+            name: _Glossiness
+          second: 0.5
+        data:
+          first:
+            name: _BumpScale
+          second: 1
+        data:
+          first:
+            name: _OcclusionStrength
+          second: 1
+        data:
+          first:
+            name: _DetailNormalMapScale
+          second: 1
+        data:
+          first:
+            name: _UVSec
+          second: 0
+        data:
+          first:
+            name: _Mode
+          second: 0
+        data:
+          first:
+            name: _Metallic
+          second: 0
+        data:
+          first:
+            name: _FresnelPower
+          second: 4
+        data:
+          first:
+            name: _OutlineWidth
+          second: 0.01
+      colors:
+        data:
+          first:
+            name: _EmissionColor
+          second: {r: 0, g: 0, b: 0, a: 1}
+        data:
+          first:
+            name: _Color
+          second: {r: 1, g: 1, b: 1, a: 1}
+        data:
+          first:
+            name: _RampShadow
+          second: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
+        data:
+          first:
+            name: _RampLight
+          second: {r: 1, g: 1, b: 1, a: 0.284}
+        data:
+          first:
+            name: _FresnelColor
+          second: {r: 1, g: 0.93103445, b: 0, a: 0.178}
+        data:
+          first:
+            name: _UserColor
+          second: {r: 1, g: 0.7241379, b: 0, a: 1}
+        data:
+          first:
+            name: _OutlineColor
+          second: {r: 0, g: 0, b: 0, a: 1}
+    textureParameters:
+    - name: Bee2_diffuse
+      alphaSource: 6
+      filterMode: 1
+      aniso: 1
+      wrapMode: 0
+    - name: Bee2_normal
+      alphaSource: 0
+      filterMode: 1
+      aniso: 1
+      wrapMode: 0
+    textureAssignments:
+    - shaderProp:
+        name: _BumpMap
+      material: {instanceID: 0}
+      baseUID: 610596349
+    buildTargetSettings:
+    - serializedVersion: 2
+      buildTarget: 
+      textureWidth: 512
+      textureHeight: 512
+      textureFormat: 0
+      loadingBehavior: 1
+  - serializedVersion: 16
+    name: Bee3
+    prototypeName: Toon_PBR
+    shader: {fileID: 4800000, guid: 23573085a5c61d64a87a2f05691cb78e, type: 3}
+    shaderKeywords: _NORMALMAP
+    renderQueue: 2450
+    lightmapFlags: 5
+    inputs:
+    - name: $outputsize
+      value:
+        scalar[0]: 8
+        scalar[1]: 8
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: DiffuseMap
+      value:
+        scalar[0]: 0
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: AO_Intensity
+      value:
+        scalar[0]: 1
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: AO_Equalizer
+      value:
+        scalar[0]: 0.43
+        scalar[1]: -0.14
+        scalar[2]: -0.24
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: AO_Levels
+      value:
+        scalar[0]: 0
+        scalar[1]: 0.34
+        scalar[2]: 0.85
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: Bevel_Distance
+      value:
+        scalar[0]: -0.01
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: Bevel_Smooth
+      value:
+        scalar[0]: 3.24
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: Normal_Intensity
+      value:
+        scalar[0]: 6.3
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: NormalMap_Blur
+      value:
+        scalar[0]: 0
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: BumpMap
+      value:
+        scalar[0]: 0
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    materialInformation:
+      serializedVersion: 5
+      offset: {x: 0, y: 0}
+      scale: {x: 1, y: 1}
+      generateMipmaps: 0
+      generateAllOutputs: 0
+      animationUpdateRate: 42
+    materialProperties:
+      serializedVersion: 2
+      texEnvs:
+        data:
+          first:
+            name: _MainTex
+          second:
+            texture: {fileID: 2800000, guid: 97b05f2304e9aef419f3376dea104d9d, type: 3}
+            scale: {x: 1, y: 1}
+            offset: {x: 0, y: 0}
+        data:
+          first:
+            name: _BumpMap
+          second:
+            texture: {instanceID: 0}
+            scale: {x: 1, y: 1}
+            offset: {x: 0, y: 0}
+        data:
+          first:
+            name: _RampMap
+          second:
+            texture: {fileID: 2800000, guid: a54a836f027df3f4a8d894236589b700, type: 3}
+            scale: {x: 1, y: 1}
+            offset: {x: 0, y: 0}
+        data:
+          first:
+            name: _ColorMap
+          second:
+            texture: {fileID: 2800000, guid: 1f18560a12d256340ab3a5c4b1f725ca, type: 3}
+            scale: {x: 1, y: 1}
+            offset: {x: 0, y: 0}
+      floats:
+        data:
+          first:
+            name: _SrcBlend
+          second: 1
+        data:
+          first:
+            name: _DstBlend
+          second: 0
+        data:
+          first:
+            name: _Cutoff
+          second: 0.5
+        data:
+          first:
+            name: _Parallax
+          second: 0.02
+        data:
+          first:
+            name: _ZWrite
+          second: 1
+        data:
+          first:
+            name: _Glossiness
+          second: 0.5
+        data:
+          first:
+            name: _BumpScale
+          second: 1
+        data:
+          first:
+            name: _OcclusionStrength
+          second: 1
+        data:
+          first:
+            name: _DetailNormalMapScale
+          second: 1
+        data:
+          first:
+            name: _UVSec
+          second: 0
+        data:
+          first:
+            name: _Mode
+          second: 0
+        data:
+          first:
+            name: _Metallic
+          second: 0
+        data:
+          first:
+            name: _FresnelPower
+          second: 4
+        data:
+          first:
+            name: _OutlineWidth
+          second: 0.01
+      colors:
+        data:
+          first:
+            name: _EmissionColor
+          second: {r: 0, g: 0, b: 0, a: 1}
+        data:
+          first:
+            name: _Color
+          second: {r: 1, g: 1, b: 1, a: 1}
+        data:
+          first:
+            name: _RampShadow
+          second: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
+        data:
+          first:
+            name: _RampLight
+          second: {r: 1, g: 1, b: 1, a: 0.284}
+        data:
+          first:
+            name: _FresnelColor
+          second: {r: 1, g: 0.93103445, b: 0, a: 0.178}
+        data:
+          first:
+            name: _UserColor
+          second: {r: 1, g: 0.7241379, b: 0, a: 1}
+        data:
+          first:
+            name: _OutlineColor
+          second: {r: 0, g: 0, b: 0, a: 1}
+    textureParameters:
+    - name: Bee3_diffuse
+      alphaSource: 6
+      filterMode: 1
+      aniso: 1
+      wrapMode: 0
+    - name: Bee3_normal
+      alphaSource: 0
+      filterMode: 1
+      aniso: 1
+      wrapMode: 0
+    textureAssignments:
+    - shaderProp:
+        name: _BumpMap
+      material: {instanceID: 0}
+      baseUID: 610596349
+    buildTargetSettings:
+    - serializedVersion: 2
+      buildTarget: 
+      textureWidth: 512
+      textureHeight: 512
+      textureFormat: 0
+      loadingBehavior: 1
+  - serializedVersion: 16
+    name: Flower
+    prototypeName: Toon_PBR
+    shader: {fileID: 4800000, guid: 23573085a5c61d64a87a2f05691cb78e, type: 3}
+    shaderKeywords: _NORMALMAP
+    renderQueue: 2450
+    lightmapFlags: 5
+    inputs:
+    - name: $outputsize
+      value:
+        scalar[0]: 8
+        scalar[1]: 8
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: DiffuseMap
+      value:
+        scalar[0]: 0
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: AO_Intensity
+      value:
+        scalar[0]: 1
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: AO_Equalizer
+      value:
+        scalar[0]: 0.43
+        scalar[1]: -0.14
+        scalar[2]: -0.24
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: AO_Levels
+      value:
+        scalar[0]: 0
+        scalar[1]: 0.34
+        scalar[2]: 0.85
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: Bevel_Distance
+      value:
+        scalar[0]: -0.01
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: Bevel_Smooth
+      value:
+        scalar[0]: 3.24
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: Normal_Intensity
+      value:
+        scalar[0]: 6.3
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: NormalMap_Blur
+      value:
+        scalar[0]: 0
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: BumpMap
+      value:
+        scalar[0]: 0
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    materialInformation:
+      serializedVersion: 5
+      offset: {x: 0, y: 0}
+      scale: {x: 1, y: 1}
+      generateMipmaps: 0
+      generateAllOutputs: 0
+      animationUpdateRate: 42
+    materialProperties:
+      serializedVersion: 2
+      texEnvs:
+        data:
+          first:
+            name: _MainTex
+          second:
+            texture: {fileID: 2800000, guid: 81794d7945e938644b2352c599489312, type: 3}
+            scale: {x: 1, y: 1}
+            offset: {x: 0, y: 0}
+        data:
+          first:
+            name: _BumpMap
+          second:
+            texture: {instanceID: 0}
+            scale: {x: 1, y: 1}
+            offset: {x: 0, y: 0}
+        data:
+          first:
+            name: _RampMap
+          second:
+            texture: {fileID: 2800000, guid: a54a836f027df3f4a8d894236589b700, type: 3}
+            scale: {x: 1, y: 1}
+            offset: {x: 0, y: 0}
+        data:
+          first:
+            name: _ColorMap
+          second:
+            texture: {fileID: 2800000, guid: 8f49c2e9c6ce93e4aa18405f6ac7b106, type: 3}
+            scale: {x: 1, y: 1}
+            offset: {x: 0, y: 0}
+      floats:
+        data:
+          first:
+            name: _SrcBlend
+          second: 1
+        data:
+          first:
+            name: _DstBlend
+          second: 0
+        data:
+          first:
+            name: _Cutoff
+          second: 0.5
+        data:
+          first:
+            name: _Parallax
+          second: 0.02
+        data:
+          first:
+            name: _ZWrite
+          second: 1
+        data:
+          first:
+            name: _Glossiness
+          second: 0.5
+        data:
+          first:
+            name: _BumpScale
+          second: 1
+        data:
+          first:
+            name: _OcclusionStrength
+          second: 1
+        data:
+          first:
+            name: _DetailNormalMapScale
+          second: 1
+        data:
+          first:
+            name: _UVSec
+          second: 0
+        data:
+          first:
+            name: _Mode
+          second: 0
+        data:
+          first:
+            name: _Metallic
+          second: 0
+        data:
+          first:
+            name: _FresnelPower
+          second: 4
+        data:
+          first:
+            name: _OutlineWidth
+          second: 0.01
+      colors:
+        data:
+          first:
+            name: _EmissionColor
+          second: {r: 0, g: 0, b: 0, a: 1}
+        data:
+          first:
+            name: _Color
+          second: {r: 1, g: 1, b: 1, a: 1}
+        data:
+          first:
+            name: _RampShadow
+          second: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
+        data:
+          first:
+            name: _RampLight
+          second: {r: 1, g: 1, b: 1, a: 0.284}
+        data:
+          first:
+            name: _FresnelColor
+          second: {r: 0.41911763, g: 0.09553415, b: 0.39680156, a: 0.178}
+        data:
+          first:
+            name: _UserColor
+          second: {r: 0.9117647, g: 0.30168685, b: 0.75253457, a: 1}
+        data:
+          first:
+            name: _OutlineColor
+          second: {r: 0, g: 0, b: 0, a: 1}
+    textureParameters:
+    - name: Flower_diffuse
+      alphaSource: 6
+      filterMode: 1
+      aniso: 1
+      wrapMode: 0
+    - name: Flower_normal
+      alphaSource: 0
+      filterMode: 1
+      aniso: 1
+      wrapMode: 0
+    textureAssignments:
+    - shaderProp:
+        name: _BumpMap
+      material: {instanceID: 0}
+      baseUID: 610596349
+    buildTargetSettings:
+    - serializedVersion: 2
+      buildTarget: 
+      textureWidth: 512
+      textureHeight: 512
+      textureFormat: 0
+      loadingBehavior: 1
+  deletedPrototypes: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
