@@ -28,8 +28,8 @@ public class FlowerGenerator : MonoBehaviour
         {
             int x = 0;
             Vector3 extents = GetComponent<BoxCollider>().bounds.extents;
-            bool colliding = true;
-
+            bool free = true;
+            
             GameObject flower = Instantiate(flowerPrefab, Vector3.zero, new Quaternion()) as GameObject;
             do
             {
@@ -41,17 +41,17 @@ public class FlowerGenerator : MonoBehaviour
 
                 foreach(GameObject other in generatedFlowers)
                 {
-                    if(!flower.GetComponent<BoxCollider>().bounds.Intersects(other.GetComponent<BoxCollider>().bounds))
+                    if(flower.GetComponent<BoxCollider>().bounds.Intersects(other.GetComponent<BoxCollider>().bounds))
                     {
-                        colliding = false;
+                        free = false;
                         break;
                     }
                 }
                 ++x;
             }
-            while (colliding && x < 1000);
-
-            if (colliding) Destroy(flower);
+            while (!free && x < 1000);
+            
+            if (!free) Destroy(flower);
             else generatedFlowers.Add(flower);
         }
     }
