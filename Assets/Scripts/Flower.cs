@@ -17,8 +17,8 @@ public class Flower : MonoBehaviour
 
 	void Start ()
     {
+        UnBlossom();
         idPlayer = Random.Range(0, 4);
-        blossomed = false;
         cooldown = Random.Range(2.0f, 7.0f);
 	}
 	
@@ -27,7 +27,7 @@ public class Flower : MonoBehaviour
         time += Time.deltaTime;
         if(time > cooldown)
         {
-            blossomed = true;
+            Blossom();
         }
 
         if(blossomed && transform.localScale.x < 1.0f)
@@ -42,20 +42,41 @@ public class Flower : MonoBehaviour
         GetComponentInChildren<Renderer>().material.color = Game.game.GetUserColor(idPlayer);
     }
 
-    void OnTriggerEnter(Collider col)
+    void OnTriggerStay(Collider col)
     {
-        
         if (col.transform.parent != null)
         {
             if (col.transform.parent.gameObject.tag.Equals("Player"))
             {
                 BeeMovement bee = col.transform.parent.gameObject.GetComponent<BeeMovement>();
-                bee.AddPolen(polen);
-                if (bee.idPlayer == idPlayer)
+                Debug.Log(bee.GetIdPlayer());
+                if (Input.GetButtonDown("Recolect"+bee.GetIdPlayer()))
                 {
-                    bee.AddPolen(polen);
+                    Recollect(bee);
+                    UnBlossom();
                 }
+ 
             }
         }
+    }
+
+    void Recollect(BeeMovement bee)
+    {
+        bee.AddPolen(polen);
+        if (bee.idPlayer == idPlayer)
+        {
+            bee.AddPolen(polen);
+        }
+    }
+
+    void Blossom()
+    {
+        blossomed = true;
+    }
+
+    void UnBlossom()
+    {
+        blossomed = false;
+        time = 0.0f;
     }
 }

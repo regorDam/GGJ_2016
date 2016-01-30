@@ -62,7 +62,13 @@ public class BeeMovement : MonoBehaviour
             }
 
 
-            if (Input.GetButton("Recolect" + idPlayer)) Debug.Log("Recolect" + idPlayer);
+            if (Input.GetButtonDown("Recolect" + idPlayer))
+                Debug.Log("Recolect" + idPlayer);
+        }
+
+        foreach (Renderer r in GetComponentsInChildren<Renderer>())
+        {
+            r.material.color = Game.game.GetUserColor(idPlayer);
         }
     }
 
