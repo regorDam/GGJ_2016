@@ -29,4 +29,27 @@ public class Honeycomb : MonoBehaviour
         float offsety = (1.0f - ((float)currentPolen / maxPolenCapacity)) * 0.5f;
         GetComponent<Renderer>().material.mainTextureOffset = new Vector2(0.0f, offsety);
     }
+
+	void OnTriggerStay(Collider col)
+	{
+		if (col.transform.parent != null)
+		{
+			if (col.transform.parent.gameObject.tag.Equals("Player"))
+			{
+				BeeMovement bee = col.transform.parent.gameObject.GetComponent<BeeMovement>();
+				Debug.Log(bee.GetIdPlayer());
+				if (Input.GetButtonDown("Drop"+bee.GetIdPlayer()))
+				{
+					DepositPolen(bee.GetPolen());
+				}
+
+			}
+		}
+	}
+
+
+	public void DepositPolen(int polen)
+	{
+		currentPolen += polen;
+	}
 }

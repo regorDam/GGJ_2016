@@ -120,4 +120,9 @@ public class BeeMovement : MonoBehaviour
             this.polen = capacity;
         }
     }
+
+	public int GetPolen()
+	{
+		return polen;
+	}
 }
