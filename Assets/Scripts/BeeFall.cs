@@ -26,7 +26,7 @@ public class BeeFall : MonoBehaviour
 			timeLeft -= Time.deltaTime;
 			if (timeLeft < 0) {
 				//transform.position = pos;
-				Kinematic();
+				Fall();
 				timeLeft = time;
 				returnPos = true;
 			}
@@ -40,7 +40,7 @@ public class BeeFall : MonoBehaviour
 
 	}
 
-	void Kinematic()
+	public void Fall()
 	{
 		rigidbody.isKinematic = !rigidbody.isKinematic;
 	}

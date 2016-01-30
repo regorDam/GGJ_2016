@@ -3,10 +3,12 @@ using System.Collections;
 
 public class BeeMovement : MonoBehaviour
 {
+	public int type;
     public float rotSpeed;
     public float speed;
+	public int capacity;
     private Rigidbody rb;
-
+	private int idPlayer;
 	void Start ()
     {
         rb = GetComponent<Rigidbody>();
@@ -26,9 +28,18 @@ public class BeeMovement : MonoBehaviour
 
         transform.LookAt(transform.position + new Vector3(inputx, 0.0f, inputz));
          
-        if (Input.GetButton("Recolect"))
-        {
-            Debug.Log("Recolect");
-        }
+		if (Input.GetButton("Recolect")) Debug.Log("Recolect");
     }
+
+	void OnCollisionEnter(Collision col)
+	{
+		if (col.gameObject.tag.Equals ("Player")) 
+			if (col.gameObject.GetComponent<BeeMovement> ().type < type) 
+				GetComponent<BeeFall> ().Fall ();
+	}
+
+	public int GetIdPlayer()
+	{
+		return idPlayer;
+	}
 }
