@@ -68,10 +68,12 @@ public class Honeycomb : MonoBehaviour
             if (Vector3.Distance(transform.position, player.transform.position) < triggerRadius)
             {
                 BeeMovement bee = player.GetComponent<BeeMovement>();
-                if (Input.GetButtonDown("Drop" + bee.GetIdPlayer()))
-                {
-                    DepositPolen(bee.GetPolen());
-                }
+				if (Input.GetButtonDown ("Drop" + bee.GetIdPlayer ())) {
+					DepositPolen (bee.GetPolen ());
+				} else if (Input.GetButtonDown ("Swap" + bee.GetIdPlayer ())) 
+				{
+					SwapBees (player);
+				}
             }
         }
 	}

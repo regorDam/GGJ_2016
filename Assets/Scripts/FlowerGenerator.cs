@@ -10,6 +10,7 @@ public class FlowerGenerator : MonoBehaviour
     public int numFlowers;
     public GameObject flowerPrefab;
     public GameObject floor;
+	public int retry = 100;
 
     void Start()
     {
@@ -39,7 +40,8 @@ public class FlowerGenerator : MonoBehaviour
                 randomPosition.y = floor.transform.position.y + floor.GetComponent<Renderer>().bounds.extents.y;
                 randomPosition.z = Random.Range(-extents.z, extents.z);
 
-                flower.transform.position = randomPosition;
+				flower.transform.position = randomPosition + transform.position;
+				flower.transform.rotation = Quaternion.AngleAxis(Random.Range(0,360),Vector3.up);
 
                 foreach (GameObject other in generatedFlowers)
                 {
@@ -51,7 +53,7 @@ public class FlowerGenerator : MonoBehaviour
                 }
                 ++x;
             }
-            while (!free && x < 100);
+            while (!free && x < retry);
 
             if (!free) Destroy(flower);
             else generatedFlowers.Add(flower);

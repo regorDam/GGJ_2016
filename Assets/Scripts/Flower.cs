@@ -44,7 +44,7 @@ public class Flower : MonoBehaviour
             transform.localScale = Vector3.Lerp(transform.localScale, minScale, Time.deltaTime * blossomSpeed); //Shrink
         }
 
-        GetComponentInChildren<Renderer>().material.color = Game.game.GetUserColor(idPlayer);
+		GetComponentInChildren<Renderer>().material.SetColor("_UserColor", Game.game.GetUserColor(idPlayer));
 
         if (playerOver != null)
         {
