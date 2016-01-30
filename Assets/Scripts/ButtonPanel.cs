@@ -33,6 +33,7 @@ public class ButtonPanel : MonoBehaviour {
         fillSteps = maxFillSteps - honeyProvider.GetCurrentPanelButtonSteps();
 
         transform.FindChild("ButtonFill").GetComponent<Image>().color = Game.game.GetUserColor(player.GetComponent<BeeMovement>().GetIdPlayer());
+        transform.FindChild("ButtonFill").GetComponent<Image>().fillAmount = fillSteps / maxFillSteps;
 
         if (fillSteps < maxFillSteps)
         {
@@ -41,8 +42,8 @@ public class ButtonPanel : MonoBehaviour {
 
             if (Input.GetButtonDown(buttonName))
             {
+                Debug.Log("Animate Press!");
                 GetComponent<Animator>().SetTrigger("Pressed");
-                transform.FindChild("ButtonFill").GetComponent<Image>().fillAmount = fillSteps / maxFillSteps;
             }
             if (fillSteps >= maxFillSteps) DestroySelf();
         }

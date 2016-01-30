@@ -15,6 +15,8 @@ public class Flower : MonoBehaviour, IButtonPanelHoneyProvider
     public float blossomSpeed;
     public Vector3 minScale;
 
+    private GameObject playerOver = null;
+
     private float time;
 
 	void Start ()
@@ -43,25 +45,30 @@ public class Flower : MonoBehaviour, IButtonPanelHoneyProvider
         }
 
         GetComponentInChildren<Renderer>().material.color = Game.game.GetUserColor(idPlayer);
-    }
 
-    void OnTriggerStay(Collider col)
-    {
-        if (col.transform.parent != null)
+        if (playerOver != null)
         {
-            if (col.transform.parent.gameObject.tag.Equals("Player"))
+            BeeMovement bee = playerOver.GetComponent<BeeMovement>();
+            if (!bee.falling && !bee.recovering && Input.GetButtonDown("Recolect" + bee.GetIdPlayer()))
             {
-                BeeMovement bee = col.transform.parent.gameObject.GetComponent<BeeMovement>();
-                if (!bee.falling && !bee.recovering && Input.GetButtonDown("Recolect" + bee.GetIdPlayer()))
-                {
-                    Recollect(bee);
-                    if(polen <= 0) UnBlossom();
-                }
- 
+                Recollect(bee);
+                if (polen <= 0) UnBlossom();
             }
         }
     }
 
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.transform.parent != null && col.transform.parent.gameObject.tag.Equals("Player"))
+            playerOver = col.transform.parent.gameObject;
+    }
+
+    void OnTriggerExit(Collider col)
+    {
+        if (col.transform.parent != null && col.transform.parent.gameObject.tag.Equals("Player") && playerOver == col.transform.parent.gameObject)
+            playerOver = null;
+    }
+    
     void Recollect(BeeMovement bee)
     {
         if (bee.idPlayer == idPlayer) polen -= 0.5f;
