@@ -72,7 +72,10 @@ public class Honeycomb : MonoBehaviour
 					DepositPolen (bee.GetPolen ());
 				} else if (Input.GetButtonDown ("Swap" + bee.GetIdPlayer ())) 
 				{
-					SwapBees (player);
+					if (idPlayer == bee.GetIdPlayer ()) 
+					{
+						SwapBees (player);
+					}
 				}
             }
         }
