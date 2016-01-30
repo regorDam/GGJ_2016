@@ -54,7 +54,7 @@ public class BeeMovement : MonoBehaviour
 
         if (!falling && !recovering) //Enable input
         {
-            Debug.Log(idPlayer + ": " + "Flying");
+            //Debug.Log(idPlayer + ": " + "Flying");
             float inputx = Input.GetAxis("Horizontal" + idPlayer);
             float inputz = Input.GetAxis("Vertical" + idPlayer);
             rb.velocity = new Vector3(inputx, 0.0f, inputz).normalized * speed;

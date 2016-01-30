@@ -9,11 +9,11 @@ public class Flower : MonoBehaviour
     public int polen;
     public float cooldown;
 
-    private bool blossomed;
+    public bool blossomed;
     public float blossomSpeed;
     public Vector3 minScale;
 
-    private float time;
+    public float time;
 
 	void Start ()
     {
@@ -49,7 +49,7 @@ public class Flower : MonoBehaviour
             if (col.transform.parent.gameObject.tag.Equals("Player"))
             {
                 BeeMovement bee = col.transform.parent.gameObject.GetComponent<BeeMovement>();
-                Debug.Log(bee.GetIdPlayer());
+                //Debug.Log(bee.GetIdPlayer());
                 if (Input.GetButtonDown("Recolect"+bee.GetIdPlayer()))
                 {
                     Recollect(bee);

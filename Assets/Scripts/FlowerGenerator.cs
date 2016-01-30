@@ -39,6 +39,10 @@ public class FlowerGenerator : MonoBehaviour
                 randomPosition.y = floor.transform.position.y + floor.GetComponent<Renderer>().bounds.extents.y;
                 randomPosition.z = Random.Range(-extents.z, extents.z);
 
+				int balanceId = BalanceSpawn();
+				if(balanceId != 0)
+					flower.GetComponent<Flower>().idPlayer = balanceId;
+
                 flower.transform.position = randomPosition;
 
                 foreach(GameObject other in generatedFlowers)
@@ -57,4 +61,30 @@ public class FlowerGenerator : MonoBehaviour
             else generatedFlowers.Add(flower);
         }
     }
+
+	int BalanceSpawn()
+	{
+		int totalPolen = 1;
+		int [] polenPlayer = new int [4]; 
+		int x = 0;
+		foreach(GameObject nestObj in GameObject.FindGameObjectsWithTag ("HoneyComb"))
+		{
+			totalPolen += nestObj.GetComponent<Honeycomb>().currentPolen;
+			polenPlayer [x] = nestObj.GetComponent<Honeycomb>().currentPolen / totalPolen;
+			Debug.Log ("Polen player num: "+ x +" "+ polenPlayer[x]);
+			x++;
+		}
+		int min = 100;
+		int playerSpawn = 0;
+		for (int i = 0; i < 4; i++) 
+		{
+			if (polenPlayer [i] < min) 
+			{
+				min = polenPlayer [i];
+				playerSpawn = i;
+			}
+		}
+
+		return playerSpawn;
+	}
 }
