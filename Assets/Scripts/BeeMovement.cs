@@ -15,15 +15,18 @@ public class BeeMovement : MonoBehaviour
     public float recoverySpeed;
 	
     public float timeLeft;
+
+    private bool falling = false;
+    private bool recovering = false;
    
-    private Vector3 pos;
+    private Vector3 returnPosition;
     private Rigidbody rb;
     private float time;
     private int polen = 0;
 
     void Start()
     {
-        pos = transform.position;
+        returnPosition = transform.position;
         rb = transform.GetComponent<Rigidbody>();
         time = timeLeft;
     }
@@ -36,34 +39,51 @@ public class BeeMovement : MonoBehaviour
                                          Time.deltaTime * rotSpeed);
         */
 
-        if (rb.useGravity)
+        if (falling)
         {
             timeLeft -= Time.deltaTime;
             if (timeLeft < 0)
             {
                 timeLeft = time;
+                falling = false;
+                recovering = true;
                 rb.useGravity = false;
             }
+            Debug.Log(idPlayer + ": " + "Falling");
         }
-        else if (transform.position.y < pos.y)
+
+        if (!falling && !recovering) //Enable input
         {
-            Vector3 moveDir = (pos - transform.position).normalized;
-            rb.velocity = moveDir * recoverySpeed * Time.deltaTime;
-        }
-        else
-        {
+            Debug.Log(idPlayer + ": " + "Flying");
             float inputx = Input.GetAxis("Horizontal" + idPlayer);
             float inputz = Input.GetAxis("Vertical" + idPlayer);
             rb.velocity = new Vector3(inputx, 0.0f, inputz).normalized * speed;
 
             if (inputx != 0 || inputz != 0)
-            {
                 transform.LookAt(transform.position + new Vector3(inputx, 0.0f, inputz));
-            }
-
 
             if (Input.GetButtonDown("Recolect" + idPlayer))
                 Debug.Log("Recolect" + idPlayer);
+        }
+
+        if (transform.position.y < returnPosition.y && !falling)
+        {
+            if(recovering) //Esta subiendo de la caida
+            {
+                Debug.Log(idPlayer + ": " + "Returning");
+                Vector3 moveDir = (returnPosition - transform.position).normalized;
+                rb.velocity = moveDir * recoverySpeed * Time.deltaTime;
+            }
+            else //se ha movido un poco abajo al colisionar con otra abeja, pero no esta cayendo
+            {
+                rb.velocity += Vector3.up * recoverySpeed * Time.deltaTime;
+            }
+        }
+
+        if (transform.position.y >= returnPosition.y)
+        {
+            rb.velocity += new Vector3(0.0f, -rb.velocity.y, 0.0f); //Quitamos velocidad en y
+            recovering = false;
         }
 
         foreach (Renderer r in GetComponentsInChildren<Renderer>())
@@ -87,7 +107,9 @@ public class BeeMovement : MonoBehaviour
 
     private void Fall()
     {
+        falling = true;
         rb.useGravity = true;
+        returnPosition = transform.position;
     }
 
     public void AddPolen(int polen)
@@ -97,7 +119,5 @@ public class BeeMovement : MonoBehaviour
         {
             this.polen = capacity;
         }
-
-        Debug.Log("polen : "+this.polen);
     }
 }

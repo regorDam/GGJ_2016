@@ -18,7 +18,7 @@ public class Flower : MonoBehaviour
 	void Start ()
     {
         UnBlossom();
-        idPlayer = Random.Range(0, 4);
+        idPlayer = Random.Range(1, 5);
         cooldown = Random.Range(2.0f, 7.0f);
 	}
 	
