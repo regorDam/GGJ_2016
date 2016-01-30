@@ -25,6 +25,7 @@ public class Honeycomb : MonoBehaviour
         CheckTrigger();
         UpdateTextureOffset();
     }
+    
 
     void UpdateTextureOffset()
     {
