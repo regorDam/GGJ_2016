@@ -7,8 +7,10 @@ public class BeeMovement : MonoBehaviour
     public float rotSpeed;
     public float speed;
 	public int capacity;
+	public int idPlayer;
+
     private Rigidbody rb;
-	private int idPlayer;
+
 	void Start ()
     {
         rb = GetComponent<Rigidbody>();
@@ -16,8 +18,8 @@ public class BeeMovement : MonoBehaviour
 	
 	void Update ()
     {
-        float inputx = Input.GetAxis("Horizontal");
-        float inputz = Input.GetAxis("Vertical");
+		float inputx = Input.GetAxis("Horizontal"+idPlayer);
+		float inputz = Input.GetAxis("Vertical"+idPlayer);
         
         transform.position += new Vector3(inputx, 0.0f, inputz) * speed * Time.deltaTime;
 
@@ -28,7 +30,7 @@ public class BeeMovement : MonoBehaviour
 
         transform.LookAt(transform.position + new Vector3(inputx, 0.0f, inputz));
          
-		if (Input.GetButton("Recolect")) Debug.Log("Recolect");
+		if (Input.GetButton("Recolect"+idPlayer)) Debug.Log("Recolect"+idPlayer);
     }
 
 	void OnCollisionEnter(Collision col)
