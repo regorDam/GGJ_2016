@@ -12,13 +12,16 @@ public class ButtonPanel : MonoBehaviour {
     public GameObject player;
 
     [HideInInspector]
+    public IButtonPanelHoneyProvider honeyProvider;
+
+    [HideInInspector]
     public Color buttonFillColor;
 
     [HideInInspector]
-    public int maxFillSteps;
+    public float maxFillSteps;
 
     [HideInInspector]
-    public int fillSteps = 0;
+    public float fillSteps = 0;
 
     void Start ()
     {
@@ -26,24 +29,22 @@ public class ButtonPanel : MonoBehaviour {
 	
 	void Update ()
     {
+        maxFillSteps = honeyProvider.GetMaxPanelButtonSteps();
+        fillSteps = maxFillSteps - honeyProvider.GetCurrentPanelButtonSteps();
+
         transform.FindChild("ButtonFill").GetComponent<Image>().color = Game.game.GetUserColor(player.GetComponent<BeeMovement>().GetIdPlayer());
+
         if (fillSteps < maxFillSteps)
         {
             GetComponent<RectTransform>().anchoredPosition =
-            Camera.main.WorldToScreenPoint(player.transform.position);
+                                        Camera.main.WorldToScreenPoint(player.transform.position);
 
             if (Input.GetButtonDown(buttonName))
             {
-                ++fillSteps;
                 GetComponent<Animator>().SetTrigger("Pressed");
-                transform.FindChild("ButtonFill").GetComponent<Image>().fillAmount = ((float)fillSteps) / maxFillSteps;
-                Debug.Log(((float)fillSteps) / maxFillSteps);
+                transform.FindChild("ButtonFill").GetComponent<Image>().fillAmount = fillSteps / maxFillSteps;
             }
-            
-            if (fillSteps >= maxFillSteps)
-            {
-                DestroySelf();
-            }
+            if (fillSteps >= maxFillSteps) DestroySelf();
         }
 	}
 

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Flower : MonoBehaviour
+public class Flower : MonoBehaviour, IButtonPanelHoneyProvider
 {
     [Range(1, 4)]
     public int idPlayer = 1;
@@ -28,7 +28,7 @@ public class Flower : MonoBehaviour
 	void Update ()
     {
         time += Time.deltaTime;
-        if(time > cooldown)
+        if(time > cooldown && !blossomed)
         {
             Blossom();
         }
@@ -54,7 +54,6 @@ public class Flower : MonoBehaviour
                 BeeMovement bee = col.transform.parent.gameObject.GetComponent<BeeMovement>();
                 if (!bee.falling && !bee.recovering && Input.GetButtonDown("Recolect" + bee.GetIdPlayer()))
                 {
-
                     Recollect(bee);
                     if(polen <= 0) UnBlossom();
                 }
@@ -80,5 +79,15 @@ public class Flower : MonoBehaviour
     {
         blossomed = false;
         time = 0.0f;
+    }
+
+    float IButtonPanelHoneyProvider.GetCurrentPanelButtonSteps()
+    {
+        return polen;
+    }
+
+    float IButtonPanelHoneyProvider.GetMaxPanelButtonSteps()
+    {
+        return originalPolen;
     }
 }

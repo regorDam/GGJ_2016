@@ -126,19 +126,17 @@ public class BeeMovement : MonoBehaviour
 		return dropPolen;
     }
     
-    void OnTriggerEnter(Collider col)
+    void OnTriggerStay(Collider col)
     {
         if (col.transform.gameObject.tag.Equals("Flower"))
         {
             if(currentButtonPanel == null)
             {
                 Flower flower = col.transform.gameObject.GetComponent<Flower>();
-                int initialSteps = (int) (flower.polen / flower.originalPolen);
-                int fillButtonMaxStepAportation = (int) (flower.polen);
                 currentButtonPanel = GameObject.Find("ButtonsCanvas").
-                    GetComponent<ButtonsCanvasManager>().CreateButtonPanelFlower("A", "Recolect" + idPlayer, 
-                                                                                 gameObject, 
-                                                                                 col.gameObject);
+                    GetComponent<ButtonsCanvasManager>().CreateButtonPanel("A", "Recolect" + idPlayer, 
+                                                                           gameObject, 
+                                                                           col.gameObject.GetComponent<Flower>());
             }
         }
     }
