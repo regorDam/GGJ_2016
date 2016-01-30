@@ -3,11 +3,15 @@ using System.Collections;
 
 public class BeeMovement : MonoBehaviour
 {
-	public int type;
+    [Range(1, 4)]
+    public int idPlayer = 1;
+
+    [Range(1, 3)]
+    public int type = 1;
+
     public float rotSpeed;
     public float speed;
 	public int capacity;
-	public int idPlayer;
 
     private Rigidbody rb;
 

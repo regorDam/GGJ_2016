@@ -3,7 +3,9 @@ using System.Collections;
 
 public class Flower : MonoBehaviour
 {
-    public int idPlayer;
+    [Range(1, 4)]
+    public int idPlayer = 1;
+
     public int polen;
     public float cooldown;
 
