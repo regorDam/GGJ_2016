@@ -100,4 +100,9 @@ public class BeeMovement : MonoBehaviour
 
         Debug.Log("polen : "+this.polen);
     }
+
+	public int GetPolen()
+	{
+		return polen;
+	}
 }
