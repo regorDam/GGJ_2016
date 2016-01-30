@@ -7,8 +7,8 @@ public class Honeycomb : MonoBehaviour
     public int idPlayer = 1;
 
     public float triggerRadius = 5.0f;
-    public int currentPolen = 0;
-    public int maxPolenCapacity = 100;
+    public float currentPolen = 0;
+    public float maxPolenCapacity = 100;
 
 	void Start ()
     {

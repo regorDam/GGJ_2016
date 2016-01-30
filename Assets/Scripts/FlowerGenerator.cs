@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class FlowerGenerator : MonoBehaviour
 {
-    private List<GameObject> generatedFlowers; 
+    private List<GameObject> generatedFlowers;
     private float time;
 
     public int numFlowers;
@@ -17,11 +17,11 @@ public class FlowerGenerator : MonoBehaviour
         generatedFlowers = new List<GameObject>();
         SpawnFlowers();
     }
-	
-	void Update ()
+
+    void Update()
     {
         time += Time.deltaTime;
-	}
+    }
 
     void SpawnFlowers()
     {
@@ -30,7 +30,7 @@ public class FlowerGenerator : MonoBehaviour
             int x = 0;
             Vector3 extents = GetComponent<BoxCollider>().bounds.extents;
             bool free = true;
-            
+
             GameObject flower = Instantiate(flowerPrefab, Vector3.zero, new Quaternion()) as GameObject;
             do
             {
@@ -41,9 +41,9 @@ public class FlowerGenerator : MonoBehaviour
 
                 flower.transform.position = randomPosition;
 
-                foreach(GameObject other in generatedFlowers)
+                foreach (GameObject other in generatedFlowers)
                 {
-                    if(flower.GetComponentInChildren<Renderer>().bounds.Intersects(other.GetComponentInChildren<Renderer>().bounds))
+                    if (flower.GetComponentInChildren<Renderer>().bounds.Intersects(other.GetComponentInChildren<Renderer>().bounds))
                     {
                         free = false;
                         break;
@@ -51,10 +51,28 @@ public class FlowerGenerator : MonoBehaviour
                 }
                 ++x;
             }
-            while (!free && x < 1000);
-            
+            while (!free && x < 100);
+
             if (!free) Destroy(flower);
             else generatedFlowers.Add(flower);
         }
+    }
+
+    public float[] GetFlowerPlayerIdProbabilities()
+    {
+        float totalPolen = 0.0f;
+        float[] probPlayers = new float[4];
+        foreach (GameObject nestObj in GameObject.FindGameObjectsWithTag("HoneyComb"))
+        {
+            totalPolen = Mathf.Max(nestObj.GetComponent<Honeycomb>().currentPolen, totalPolen);
+        }
+        
+        foreach (GameObject nestObj in GameObject.FindGameObjectsWithTag("HoneyComb"))
+        {
+            int playerId = nestObj.GetComponent<Honeycomb>().idPlayer;
+            Debug.Log(playerId + ": " + nestObj.GetComponent<Honeycomb>().currentPolen);
+            probPlayers[playerId-1] = (totalPolen - (nestObj.GetComponent<Honeycomb>().currentPolen)) / totalPolen;
+        }
+        return probPlayers;
     }
 }

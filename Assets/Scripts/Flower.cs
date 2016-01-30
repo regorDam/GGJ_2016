@@ -78,6 +78,18 @@ public class Flower : MonoBehaviour, IButtonPanelHoneyProvider
 
     void Blossom()
     {
+        float[] probs = GameObject.Find("FlowerGenerator").GetComponent<FlowerGenerator>().GetFlowerPlayerIdProbabilities();
+        float probTotal = 0.0f; foreach(float f in probs) probTotal += f;
+
+        Debug.Log("probs: " + probs[0] + ", " + probs[1] + ", " + probs[2] + ", " + probs[3]);
+        float p = Random.Range(0.0f, probTotal);
+        if (p <= probs[0])      idPlayer = 1;
+        else if (p <= probs[1]) idPlayer = 2;
+        else if (p <= probs[2]) idPlayer = 3;
+        else if (p <= probs[3]) idPlayer = 4;
+
+        Debug.Log("idPlayer: " + idPlayer);
+
         polen = originalPolen; 
         blossomed = true;
     }
