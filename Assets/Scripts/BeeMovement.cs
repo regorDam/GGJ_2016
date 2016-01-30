@@ -123,6 +123,8 @@ public class BeeMovement : MonoBehaviour
 
 	public int GetPolen()
 	{
-		return polen;
+        int dropPolen = Mathf.Min(2,polen);
+        polen -= dropPolen;
+		return dropPolen;
 	}
 }
